@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import {Alert, SafeAreaView, StatusBar} from 'react-native';
 import { LoginForm } from './app/components/organisms/login-form/login-form';
 
-const App: () => React.ReactNode = () => {
+const App: FunctionComponent<any> = () => {
 
   const onSubmit = (username: string, password: string) => {
     Alert.alert(`User: ${username}\nPassword: ${password}`);
