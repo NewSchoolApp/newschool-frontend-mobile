@@ -8,5 +8,5 @@ export const Container = styled.View`
 `;
 
 export const Input = styled.TextInput`
-    color: white;
+  color: white;
 `;

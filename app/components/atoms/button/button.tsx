@@ -9,7 +9,11 @@ const Button = (props: ButtonProps) => {
       onPress={props.onPress}
       background={props.outline ? 'transparent' : 'white'}
       border="white">
-      <Label preset={"medium"} color={props.outline ? "white" : "purple"} text={props.text} />
+      <Label
+        preset={'medium'}
+        color={props.outline ? 'white' : 'purple'}
+        text={props.text}
+      />
     </Container>
   );
 };
