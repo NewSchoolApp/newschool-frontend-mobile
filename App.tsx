@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {StatusBar} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
-import {LoginScreen} from './app/modules/login/screens/login-screen';
+import {LoginScreen} from './app/modules/login/login-screen';
 
 const App: FunctionComponent<any> = () => {
   return (
