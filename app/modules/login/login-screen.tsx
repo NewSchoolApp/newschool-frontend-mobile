@@ -1,8 +1,8 @@
 import React from 'react';
 import {Alert} from 'react-native';
-import {LoginForm} from '../../../components/organisms/login-form/login-form';
+import {LoginForm} from '../../components/organisms/login-form/login-form';
 import {Container, StyledImage} from './login-screen.styles';
-import {Logo} from '../../../components/atoms/logo/logo';
+import {Logo} from '../../components/atoms/logo/logo';
 
 export const LoginScreen = () => {
   const onSubmit = (username: string, password: string) => {
