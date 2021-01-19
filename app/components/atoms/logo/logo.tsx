@@ -5,7 +5,7 @@ import {Container} from './logo.styles';
 export const Logo = () => {
   return (
     <Container>
-      <LogoSVG width={'60%'} height={150} />
+      <LogoSVG width={150} height={150} />
     </Container>
   );
 };

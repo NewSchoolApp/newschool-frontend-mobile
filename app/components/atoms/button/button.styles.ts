@@ -1,15 +1,10 @@
 import styled from 'styled-components/native';
+import { Button } from 'react-native-paper';
 
-export const Container = styled.TouchableOpacity<{
-  background: string;
-  border: string;
-}>`
-  border-radius: 4px;
-  font-size: 14px;
-  text-align: center;
+export const StyledButton = styled(Button).attrs<{ textColor: string; }>(props => ({
+  labelStyle: {
+    color: props.textColor
+  }
+}))<{ textColor: string; }>`
   padding: 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${(props) => props.border};
-  background-color: ${(props) => props.background};
 `;

@@ -1,12 +1,11 @@
 import styled from 'styled-components/native';
+import { TextInput } from 'react-native-paper';
 
 export const Container = styled.View`
-  padding: 8px;
-  border-color: white;
-  border-width: 1px;
-  border-radius: 4px;
 `;
 
-export const Input = styled.TextInput`
-  color: white;
+export const Input = styled(TextInput)`
+  background-color: transparent;
+  height: 40px;
+  justify-content: center;
 `;
