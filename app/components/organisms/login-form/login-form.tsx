@@ -11,9 +11,6 @@ export const LoginForm = (props: LoginFormProps) => {
   return (
     <Container>
       <ItemContainer>
-        <Logo />
-      </ItemContainer>
-      <ItemContainer>
         <TextField onChangeText={setUsername} placeholder="Usuário" />
       </ItemContainer>
       <ItemContainer>
