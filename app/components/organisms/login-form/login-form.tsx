@@ -3,7 +3,6 @@ import Button from '../../atoms/button/button';
 import {TextField} from '../../atoms/text-field/text-field';
 import {ItemContainer, Container} from './login-form.styles';
 import {LoginFormProps} from './login-form.props';
-import {Logo} from '../../atoms/logo/logo';
 
 export const LoginForm = (props: LoginFormProps) => {
   const [username, setUsername] = useState('');
