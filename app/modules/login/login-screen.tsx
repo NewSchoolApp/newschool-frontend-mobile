@@ -13,7 +13,7 @@ export const LoginScreen = () => {
       Alert.alert('Logged in!!!');
     }
   }, [signed]);
-  
+
   const onSubmit = (username: string, password: string) => {
     signIn(username, password);
   };
