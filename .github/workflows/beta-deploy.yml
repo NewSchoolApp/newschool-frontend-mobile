@@ -34,9 +34,7 @@ jobs:
     - name: Install Fastlane dependencies
       run: sudo gem install bundler -v '2.1.4' && sudo gem install rake
     - name: Install Fastlane
-      run: |
-        bundle config path vendor/bundle
-        bundle install
+      run: bundle config path vendor/bundle && bundle install
     - name: Run yarn install
       run: yarn
     - name: Run build
