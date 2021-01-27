@@ -24,7 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: yarn && sudo apt-get install ruby-dev && sudo gem install fastlane
+    - name: Install ruby
+      run: sudo apt-get install 2.6.3p62
+    - name: Install Fastlane
+      run: sudo gem install fastlane
+    - name: Run yarn install
+      run: yarn
     - name: Run build
       run: yarn build-release-android version:"${{github.event.inputs.tag}}" name:"${{github.event.inputs.name}}"
