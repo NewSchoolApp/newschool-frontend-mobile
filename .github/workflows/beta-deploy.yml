@@ -22,8 +22,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     steps:
     - uses: actions/checkout@v2
     - name: Install Fastlane dependencies
@@ -33,4 +31,14 @@ jobs:
     - name: Run yarn install
       run: yarn
     - name: Run build
-      run: yarn build-release-android version:"${{github.event.inputs.tag}}" name:"${{github.event.inputs.name}}"
+      run: yarn build-release-android skip_release:true
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{github.event.inputs.tag}}
+        release_name: ${{github.event.inputs.name}}
+        draft: false
+        prerelease: false
