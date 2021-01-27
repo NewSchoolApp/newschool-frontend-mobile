@@ -32,7 +32,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gems-
     - name: Install Fastlane dependencies
-      run: sudo gem install bundler && sudo gem install rake
+      run: sudo gem install bundler -v '2.1.4' && sudo gem install rake
     - name: Install Fastlane
       run: |
         bundle config path vendor/bundle
