@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install ruby
-      run: sudo apt-get install 2.6.3p62
+      run: sudo apt-get install ruby
     - name: Install Fastlane
       run: sudo gem install fastlane
     - name: Run yarn install
