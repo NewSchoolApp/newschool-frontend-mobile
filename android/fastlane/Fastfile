@@ -21,19 +21,21 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
+  desc "Submit a new Beta Build to Github Releases"
   lane :beta do |options|
     puts options[:version]
-    gradle(task: "clean assembleRelease")
-    set_github_release(
-    repository_name: "RanderGabriel/newschool-app",
-    api_token: ENV["GITHUB_TOKEN"],
-    name: options[:name],
-    tag_name: options[:version],
-    description: (File.read("changelog") rescue "No changelog provided"),
-    commitish: "master",
-    upload_assets: [lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]]
-  )
+    #gradle(task: "clean assembleRelease")
+    if not options[:skip_release]
+      set_github_release(
+      repository_name: "RanderGabriel/newschool-app",
+      api_token: ENV["GITHUB_TOKEN"],
+      name: options[:name],
+      tag_name: options[:version],
+      description: (File.read("changelog") rescue "No changelog provided"),
+      commitish: "master",
+      upload_assets: [lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]]
+      )
+    end
     # sh "your_script.sh"
     # You can also use other beta testing services here
   end
