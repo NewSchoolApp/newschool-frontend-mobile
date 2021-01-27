@@ -24,7 +24,7 @@ platform :android do
   desc "Submit a new Beta Build to Github Releases"
   lane :beta do |options|
     puts options[:version]
-    #gradle(task: "clean assembleRelease")
+    gradle(task: "clean assembleRelease")
     if not options[:skip_release]
       set_github_release(
       repository_name: "RanderGabriel/newschool-app",
