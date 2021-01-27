@@ -27,7 +27,6 @@ const SecuredRoutes = () => (
 
 export const Routes = () => {
   const {signed} = useAuth();
-  console.log("SIGNED? " + signed)
   return (
     <NavigationContainer>
       {signed ? <SecuredRoutes /> : <LoginRoutes />}
