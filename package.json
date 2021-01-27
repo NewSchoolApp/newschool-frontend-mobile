@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "tsc --noemit && eslint .",
-    "build-release-android": "cd android && fastlane beta"
+    "build-release-android": "cd android && bundle exec fastlane beta"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
