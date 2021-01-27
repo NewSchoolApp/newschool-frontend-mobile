@@ -24,7 +24,6 @@ export const AuthProvider: React.FC = ({children}) => {
       setUser(userApi);
     }
   }
-  console.log('RENDER CARAI', signIn);
 
   return (
     <AuthContext.Provider value={{signed: !!user, user, signIn}}>
