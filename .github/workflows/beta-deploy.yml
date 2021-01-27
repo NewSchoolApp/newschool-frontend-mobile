@@ -20,12 +20,12 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  greet:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install ruby
-      run: sudo gem install bundler
+    - name: Install Fastlane dependencies
+      run: sudo gem install bundler && sudo gem install rake
     - name: Install Fastlane
       run: sudo gem install fastlane
     - name: Run yarn install
