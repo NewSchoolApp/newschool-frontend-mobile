@@ -36,7 +36,7 @@ jobs:
     - name: Install Fastlane
       run: |
         bundle config path vendor/bundle
-        sudo bundle install
+        bundle install
     - name: Run yarn install
       run: yarn
     - name: Run build
