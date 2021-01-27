@@ -25,6 +25,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: yarn && gem install fastlane
+      run: yarn && sudo gem install fastlane
     - name: Run build
       run: yarn build-release-android version:"${{github.event.inputs.tag}}" name:"${{github.event.inputs.name}}"
