@@ -1,4 +1,7 @@
 export interface TextFieldProps {
-  placeholder: string | undefined;
+  secureTextEntry?: boolean;
+  onBlur: (e: any) => void;
+  placeholder?: string;
   onChangeText: (text: string) => void;
+  error?: string;
 }

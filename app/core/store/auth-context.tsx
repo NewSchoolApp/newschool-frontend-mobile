@@ -1,4 +1,5 @@
 import React, {createContext, useState} from 'react';
+import {Alert} from 'react-native';
 import * as auth from '../../environment/http/auth';
 
 interface AuthContextData {
@@ -22,6 +23,8 @@ export const AuthProvider: React.FC = ({children}) => {
         token: response.data.token,
       };
       setUser(userApi);
+    } else {
+      Alert.alert('Ocorreu um erro ao se autenticar.');
     }
   }
 
