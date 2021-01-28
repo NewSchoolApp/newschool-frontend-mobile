@@ -2,13 +2,13 @@
 
 #### O que é?
 
-Esse repositório contém a implementação de uma versão inicial da rearquitetura do projeto NewSchoolApp (https://github.com/NewSchoolApp/newschool-frontend). Se trata de uma tentativa de migração do projeto em produção, construído com nuxtjs (Vue) e cordova, para React Native
-A ideia inicial é propor uma estrutura inicial para que possamos dar sequência ao projeto.
-Se você quiser saber mais sobre o projeto newschool, o linkedin do projeto contém mais informações (https://www.linkedin.com/company/newschoolapp/)
+Esse repositório contém a implementação de uma versão inicial da rearquitetura do projeto NewSchoolApp (https://github.com/NewSchoolApp/newschool-frontend). Se trata de uma tentativa de migração do projeto em produção, construído com nuxtjs (Vue) e cordova, para React Native.  
+A ideia inicial é propor uma estrutura inicial para que possamos dar sequência ao projeto.  
+Se você quiser saber mais sobre o projeto newschool, o linkedin do projeto contém mais informações (https://www.linkedin.com/company/newschoolapp/)  
 
 #### Stack
 
-O projeto está sendo construído utilizando as seguintes tecnologias:
+O projeto está sendo construído utilizando as seguintes tecnologias:  
 
 - **TypeScript** como linguagem
 - **React Native** como framework
@@ -20,8 +20,8 @@ O projeto está sendo construído utilizando as seguintes tecnologias:
 
 #### Estrutura
 
-A pasta **app** contém o código do projeto, e as pastas android e ios contém os projetos nativos de cada plataforma.
-O projeto é divido em pastas, de acordo com a responsabilidade dos componentes do sistema
+A pasta **app** contém o código do projeto, e as pastas android e ios contém os projetos nativos de cada plataforma.  
+O projeto é divido em pastas, de acordo com a responsabilidade dos componentes do sistema  
 
 - **app/assets** - Agrupa os assets estáticos da aplicação
 - **app/components** - Agrupa os componentes reaproveitáveis da aplicação (Botões, Inputs etc)
