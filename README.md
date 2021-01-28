@@ -18,6 +18,19 @@ O projeto está sendo construído utilizando as seguintes tecnologias:
 - **Fastlane** para scripts de automação de builds
 - **Github Actions** para CI
 
+### Como executar?
+
+Para rodar o projeto, é necessário configurar o ambiente para usar o React Native.  
+Caso ainda não tenha configurado, basta seguir a documentação oficial (https://reactnative.dev/docs/environment-setup)
+Uma vez configurado, instale as dependências com o comando:  
+
+```yarn install```  
+
+Para executar o projeto, use:
+
+```react-native run-android```
+
+
 ### Estrutura
 
 A pasta **app** contém o código do projeto, e as pastas android e ios contém os projetos nativos de cada plataforma.  
