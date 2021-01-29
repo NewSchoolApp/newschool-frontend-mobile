@@ -1,0 +1,54 @@
+# This is a basic workflow that is manually triggered
+
+name: Beta deploy
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      tag:
+        description: 'Versão da release'
+        required: true
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Nome para a versão'
+        # Input has to be provided for the workflow to run
+        required: true
+      
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Fastlane dependencies
+      run: sudo gem install bundler -v '2.1.4' && sudo gem install rake
+    - name: Install Fastlane
+      run: sudo gem install fastlane
+    - name: Run yarn install
+      run: yarn
+    - name: Run build
+      run: yarn build-release-android skip_release:true
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{github.event.inputs.tag}}
+        release_name: ${{github.event.inputs.name}}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./android/app/build/outputs/apk/release/app-release.apk
+        asset_name: app-release.apk
+        asset_content_type: application/vnd.android.package-archive
