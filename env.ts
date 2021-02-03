@@ -5,3 +5,5 @@ export const credentials = {
   name: 'NEWSCHOOL@FRONT',
   secret: 'NEWSCHOOL@FRONTSECRET',
 };
+
+export const sentryDsn = 'SENTRY_DSN';
