@@ -6,4 +6,4 @@ export const credentials = {
   secret: 'NEWSCHOOL@FRONTSECRET',
 };
 
-export const sentryDsn = "SENTRY_DSN"
+export const sentryDsn = 'SENTRY_DSN';
