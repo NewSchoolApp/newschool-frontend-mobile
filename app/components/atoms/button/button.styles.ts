@@ -8,5 +8,8 @@ export const StyledButton = styled(Button).attrs<{textColor: string}>(
     },
   }),
 )<{textColor: string}>`
+  border-style: solid;
+  margin: -3px;
+  border: ${props => props.mode == 'outlined' ? 2 : 0}px solid #FFF;
   padding: 8px;
 `;

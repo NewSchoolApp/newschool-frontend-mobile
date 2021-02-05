@@ -9,7 +9,7 @@ import {useAuth} from '../../core/hooks/auth';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
-    .min(8, 'A senha deve ter 8 carcteres')
+    .min(6, 'A senha deve ter 6 carcteres')
     .required('Campo obrigatório'),
   username: Yup.string().email('E-mail inválido').required('Campo obrigatório'),
 });
