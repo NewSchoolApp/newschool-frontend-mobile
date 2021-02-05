@@ -7,10 +7,11 @@ const Button = (props: ButtonProps) => {
     // @ts-ignore
     // Devido a um problema na lib (https://github.com/callstack/react-native-paper/issues/1971)
     <StyledButton
-      textColor={props.outline ? 'white' : '#6600cc'}
-      mode={props.outline ? 'outlined' : 'contained'}
+      textColor={props.textColor ? props.textColor : "#FFF"}
+      mode={props.mode}
       color="white"
-      onPress={props.onPress}>
+      onPress={props.onPress}
+      icon={props.icon}>
       {props.text}
     </StyledButton>
   );
