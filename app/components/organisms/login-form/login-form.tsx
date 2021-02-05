@@ -32,10 +32,10 @@ export const LoginForm = (props: LoginFormProps) => {
         <Button onPress={props.onSignup} mode="outlined" text="Cadastrar" />
       </ItemContainer>
       <ItemContainer>
-        <Button onPress={props.onSignup} icon="facebook" mode="text" text="Entrar com Facebook" />
+        <Button icon="facebook" mode="text" text="Entrar com Facebook" />
       </ItemContainer>
       <ItemContainer>
-        <Button onPress={props.onSignup} mode="text" text="Esqueceu seu senha?" />
+        <Button mode="text" text="Esqueceu seu senha?" />
       </ItemContainer>
     </Container>
   );
