@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '../../atoms/button/button';
-import {TextField} from '../../atoms/text-field/text-field';
-import {ItemContainer, FormFields, Container} from './login-form.styles';
-import {LoginFormProps} from './login-form.props';
+import { TextField } from '../../atoms/text-field/text-field';
+import { ItemContainer, FormFields, Container } from './login-form.styles';
+import { LoginFormProps } from './login-form.props';
 
 export const LoginForm = (props: LoginFormProps) => {
   return (
@@ -26,7 +26,12 @@ export const LoginForm = (props: LoginFormProps) => {
         </ItemContainer>
       </FormFields>
       <ItemContainer>
-        <Button onPress={() => props.onSubmit()} mode="contained" text="Entrar" textColor="#6600cc" />
+        <Button
+          onPress={() => props.onSubmit()}
+          mode="contained"
+          text="Entrar"
+          textColor="#6600cc"
+        />
       </ItemContainer>
       <ItemContainer>
         <Button onPress={props.onSignup} mode="outlined" text="Cadastrar" />

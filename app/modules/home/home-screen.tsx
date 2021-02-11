@@ -1,6 +1,6 @@
 import React from 'react';
-import {Label} from '../../components/atoms/label/label';
-import {Container} from './home-screen.styles';
+import { Label } from '../../components/atoms/label/label';
+import { Container } from './home-screen.styles';
 
 export const HomeScreen = () => {
   return (

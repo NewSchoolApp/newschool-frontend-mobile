@@ -1,6 +1,6 @@
 import React from 'react';
-import {Input, HelperText} from './text-field.styles';
-import {TextFieldProps} from './text-field.props';
+import { Input, HelperText } from './text-field.styles';
+import { TextFieldProps } from './text-field.props';
 
 export const TextField = (props: TextFieldProps) => {
   return (

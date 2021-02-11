@@ -1,12 +1,12 @@
-import {createStackNavigator} from '@react-navigation/stack';
-import React, {FunctionComponent} from 'react';
-import {StatusBar} from 'react-native';
-import {Provider as PaperProvider} from 'react-native-paper';
-import {AuthProvider} from './app/core/store/auth-context';
-import {Routes} from './app/navigation/routes';
+import { createStackNavigator } from '@react-navigation/stack';
+import React, { FunctionComponent } from 'react';
+import { StatusBar } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { AuthProvider } from './app/core/store/auth-context';
+import { Routes } from './app/navigation/routes';
 //Error tracking
 import * as Sentry from '@sentry/react-native';
-import {sentryDsn} from './env';
+import { sentryDsn } from './env';
 
 !__DEV__ &&
   Sentry.init({

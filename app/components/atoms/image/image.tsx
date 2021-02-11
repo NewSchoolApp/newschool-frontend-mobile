@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {ImageURISource, Image as RNImage} from 'react-native';
-import {ImageProps} from './image.props';
+import { ImageURISource, Image as RNImage } from 'react-native';
+import { ImageProps } from './image.props';
 
-const images: {[key: string]: ImageURISource} = {
+const images: { [key: string]: ImageURISource } = {
   paraisopolis: require('../../../assets/paraisopolis.png'),
 };
 

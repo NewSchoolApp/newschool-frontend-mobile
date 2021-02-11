@@ -1,5 +1,5 @@
-import React, {createContext, useState} from 'react';
-import {Alert} from 'react-native';
+import React, { createContext, useState } from 'react';
+import { Alert } from 'react-native';
 import * as auth from '../../environment/http/auth';
 
 interface AuthContextData {
@@ -14,10 +14,10 @@ interface User {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-export const AuthProvider: React.FC = ({children}) => {
+export const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   async function signIn(username: string, password: string) {
-    const response = await auth.signIn({username, password});
+    const response = await auth.signIn({ username, password });
     if (response.success) {
       const userApi = {
         token: response.data.token,
@@ -29,7 +29,7 @@ export const AuthProvider: React.FC = ({children}) => {
   }
 
   return (
-    <AuthContext.Provider value={{signed: !!user, user, signIn}}>
+    <AuthContext.Provider value={{ signed: !!user, user, signIn }}>
       {children}
     </AuthContext.Provider>
   );

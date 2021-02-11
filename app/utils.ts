@@ -1,5 +1,5 @@
-import {Buffer} from 'buffer';
-import {credentials} from '../env';
+import { Buffer } from 'buffer';
+import { credentials } from '../env';
 
 export default {
   toFormData: (object: any) => {
