@@ -1,5 +1,5 @@
 import utils from '../../utils';
-import {DataResponse, ErrorResponse, http} from './config';
+import { DataResponse, ErrorResponse, http } from './config';
 
 export interface SignInRequest {
   username: string;
@@ -28,8 +28,8 @@ export const signIn = async (
         },
       },
     );
-    return {success: true, data: {token: res.data.accessToken}};
+    return { success: true, data: { token: res.data.accessToken } };
   } catch (err) {
-    return {success: false, error: 'Ocorreu um erro ao autenticar'};
+    return { success: false, error: 'Ocorreu um erro ao autenticar' };
   }
 };

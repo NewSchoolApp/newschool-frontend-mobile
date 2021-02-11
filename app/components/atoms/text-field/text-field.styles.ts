@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {TextInput, HelperText as PaperHelperText} from 'react-native-paper';
+import { TextInput, HelperText as PaperHelperText } from 'react-native-paper';
 
 export const Container = styled.View``;
 

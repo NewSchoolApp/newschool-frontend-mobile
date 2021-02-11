@@ -11,4 +11,3 @@ export const FormFields = styled.View`
 export const Container = styled.View`
   margin: 32px;
 `;
-

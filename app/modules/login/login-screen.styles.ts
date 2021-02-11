@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {Image} from '../../components/atoms/image/image';
+import { Image } from '../../components/atoms/image/image';
 
 export const Container = styled.SafeAreaView`
   flex: 1;

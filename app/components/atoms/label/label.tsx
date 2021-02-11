@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {TextInputProps} from 'react-native';
-import {LabelProps} from './label.props';
-import {Text} from './label.styles';
+import { TextInputProps } from 'react-native';
+import { LabelProps } from './label.props';
+import { Text } from './label.styles';
 
-const presets: {[key: string]: TextInputProps} = {
+const presets: { [key: string]: TextInputProps } = {
   medium: {
     style: {
       fontSize: 14,

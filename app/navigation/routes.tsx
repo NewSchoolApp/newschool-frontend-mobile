@@ -1,9 +1,9 @@
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {LoginScreen} from '../modules/login/login-screen';
-import {Stack} from '../../App';
-import {useAuth} from '../core/hooks/auth';
-import {HomeScreen} from '../modules/home/home-screen';
+import { LoginScreen } from '../modules/login/login-screen';
+import { Stack } from '../../App';
+import { useAuth } from '../core/hooks/auth';
+import { HomeScreen } from '../modules/home/home-screen';
 
 const LoginRoutes = () => (
   <Stack.Navigator
@@ -26,7 +26,7 @@ const SecuredRoutes = () => (
 );
 
 export const Routes = () => {
-  const {signed} = useAuth();
+  const { signed } = useAuth();
   return (
     <NavigationContainer>
       {signed ? <SecuredRoutes /> : <LoginRoutes />}

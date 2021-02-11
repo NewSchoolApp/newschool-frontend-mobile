@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import {baseUrl} from '../../../env';
+import { baseUrl } from '../../../env';
 
 //TODO: Criar estrutura base para requests
 export const http = Axios.create({

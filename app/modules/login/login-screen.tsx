@@ -1,11 +1,11 @@
 import React from 'react';
-import {Alert} from 'react-native';
-import {Formik} from 'formik';
+import { Alert } from 'react-native';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {LoginForm} from '../../components/organisms/login-form/login-form';
-import {Container, StyledImage} from './login-screen.styles';
-import {Logo} from '../../components/atoms/logo/logo';
-import {useAuth} from '../../core/hooks/auth';
+import { LoginForm } from '../../components/organisms/login-form/login-form';
+import { Container, StyledImage } from './login-screen.styles';
+import { Logo } from '../../components/atoms/logo/logo';
+import { useAuth } from '../../core/hooks/auth';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -15,7 +15,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const LoginScreen = () => {
-  const {signIn} = useAuth();
+  const { signIn } = useAuth();
 
   const onSubmit = (username: string, password: string) => {
     signIn(username, password);
@@ -36,7 +36,7 @@ export const LoginScreen = () => {
           username: '',
           password: '',
         }}>
-        {({errors, handleChange, handleBlur, handleSubmit, values}) => (
+        {({ errors, handleChange, handleBlur, handleSubmit, values }) => (
           <LoginForm
             password={values.password}
             username={values.username}
