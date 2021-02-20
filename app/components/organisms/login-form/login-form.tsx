@@ -3,6 +3,7 @@ import Button from '../../atoms/button/button';
 import { TextField } from '../../atoms/text-field/text-field';
 import { ItemContainer, FormFields, Container } from './login-form.styles';
 import { LoginFormProps } from './login-form.props';
+import { PRIMARY } from '../../../styles/colors/constants';
 
 export const LoginForm = (props: LoginFormProps) => {
   return (
@@ -30,7 +31,7 @@ export const LoginForm = (props: LoginFormProps) => {
           onPress={() => props.onSubmit()}
           mode="contained"
           text="Entrar"
-          textColor="#6600cc"
+          textColor={PRIMARY}
         />
       </ItemContainer>
       <ItemContainer>

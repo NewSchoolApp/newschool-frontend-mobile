@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 import { Image } from '../../components/atoms/image/image';
+import { PRIMARY } from '../../styles/colors/constants';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #6600cc;
+  background-color: ${PRIMARY};
   justify-content: center;
 `;
 
