@@ -6,7 +6,8 @@ import { LoginForm } from '../../components/organisms/login-form/login-form';
 import { Container, StyledImage } from './login-screen.styles';
 import { Logo } from '../../components/atoms/logo/logo';
 import { useAuth } from '../../core/hooks/auth';
-import { ActivityIndicator, Colors } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native-paper';
+import { WHITE } from '../../styles/colors/constants';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -37,7 +38,7 @@ export const LoginScreen = () => {
   return (
     <Container>
       {loading ? (
-        <ActivityIndicator animating={true} color={'#fff'} size="large" />
+        <ActivityIndicator animating={true} color={WHITE} size="large" />
       ) : (
         <>
           <StyledImage file={'paraisopolis'} />
