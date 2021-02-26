@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { LoginForm } from '../../components/organisms/login-form/login-form';
+import { LoginForm } from '@ns/components/organisms/login-form/login-form';
 import { Container, StyledImage } from './login-screen.styles';
-import { Logo } from '../../components/atoms/logo/logo';
-import { useAuth } from '../../core/hooks/auth';
+import { Logo } from '@ns/components/atoms/logo/logo';
+import { useAuth } from '@ns/core/hooks/auth';
 import { ActivityIndicator } from 'react-native-paper';
-import { WHITE } from '../../styles/colors/constants';
+import { WHITE } from '@ns/styles/colors/constants';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()

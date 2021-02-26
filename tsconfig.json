@@ -11,7 +11,14 @@
     "strict": true,
     "target": "esnext",
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "rootDirs": [".", "tests"],
+    "baseUrl": ".",
+    "paths": {
+      "@ns/*": ["./app/*"],
+      "@root/*": ["./*"],
+      "@tests/*": ["./tests/*"]
+    }
   },
   "exclude": [
     "node_modules",

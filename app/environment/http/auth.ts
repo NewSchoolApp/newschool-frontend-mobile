@@ -1,4 +1,4 @@
-import utils from '../../utils';
+import utils from '@ns/utils';
 import { DataResponse, ErrorResponse, http } from './config';
 
 export interface SignInRequest {

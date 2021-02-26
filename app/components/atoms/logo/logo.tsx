@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoSVG from '../../../assets/logo.svg';
+import LogoSVG from '@ns/assets/logo.svg';
 import { Container } from './logo.styles';
 
 export const Logo = () => {

@@ -1,9 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { LoginScreen } from '../modules/login/login-screen';
-import { Stack } from '../../App';
-import { useAuth } from '../core/hooks/auth';
-import { HomeScreen } from '../modules/home/home-screen';
+import { LoginScreen } from '@ns/modules/login/login-screen';
+import { useAuth } from '@ns/core/hooks/auth';
+import { HomeScreen } from '@ns/modules/home/home-screen';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 const LoginRoutes = () => (
   <Stack.Navigator

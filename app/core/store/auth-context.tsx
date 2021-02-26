@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { Alert } from 'react-native';
-import * as auth from '../../environment/http/auth';
+import * as auth from '@ns/environment/http/auth';
 
 interface AuthContextData {
   signed: boolean;

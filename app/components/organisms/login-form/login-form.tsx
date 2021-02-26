@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '../../atoms/button/button';
-import { TextField } from '../../atoms/text-field/text-field';
+import Button from '@ns/components/atoms/button/button';
+import { TextField } from '@ns/components/atoms/text-field/text-field';
+import { PRIMARY } from '@ns/styles/colors/constants';
 import { ItemContainer, FormFields, Container } from './login-form.styles';
 import { LoginFormProps } from './login-form.props';
-import { PRIMARY } from '../../../styles/colors/constants';
 
 export const LoginForm = (props: LoginFormProps) => {
   return (
