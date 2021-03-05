@@ -1,10 +1,10 @@
-## Novo app NewSchool
+## Novo App NewSchool
 
 ### O que é?
 
-Esse repositório contém a implementação de uma versão inicial da rearquitetura do projeto NewSchoolApp (https://github.com/NewSchoolApp/newschool-frontend). Se trata de uma tentativa de migração do projeto em produção, construído com nuxtjs (Vue) e cordova, para React Native.  
+Esse repositório contém a implementação de uma versão inicial da rearquitetura do projeto **[NewSchoolApp](https://github.com/NewSchoolApp/newschool-frontend)**. Se trata de uma tentativa de migração do projeto em produção, construído com Nextjs (Vue) e cordova, para React Native.  
 A ideia inicial é propor uma estrutura inicial para que possamos dar sequência ao projeto.  
-Se você quiser saber mais sobre o projeto newschool, o linkedin do projeto contém mais informações (https://www.linkedin.com/company/newschoolapp/)  
+Se você quiser saber mais sobre o projeto newschool, o **[LinkedIn](https://www.linkedin.com/company/newschoolapp/)** do projeto contém mais informações.
 
 ### Stack
 
@@ -24,7 +24,7 @@ Para rodar o projeto, é necessário configurar o ambiente para usar o React Nat
 Caso ainda não tenha configurado, basta seguir a documentação oficial (https://reactnative.dev/docs/environment-setup)
 Uma vez configurado, instale as dependências com o comando:  
 
-```yarn install```  
+```yarn install``` ou  ```npm install``` 
 
 Para executar o projeto, use:
 

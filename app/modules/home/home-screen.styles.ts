@@ -1,4 +1,4 @@
-import { PRIMARY } from './../../styles/colors/constants';
+import { PRIMARY } from '@ns/styles/colors/constants';
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`

@@ -1,9 +1,9 @@
 import Axios from 'axios';
-import { baseUrl } from '../../../env';
+import env from '@ns/main/config/env';
 
 //TODO: Criar estrutura base para requests
 export const http = Axios.create({
-  baseURL: baseUrl,
+  baseURL: env.baseUrl,
 });
 
 export interface ErrorResponse {

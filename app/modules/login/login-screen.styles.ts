@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
-import { Image } from '../../components/atoms/image/image';
-import { PRIMARY } from '../../styles/colors/constants';
+import { Image } from '@ns/components/atoms/image/image';
+import { PRIMARY } from '@ns/styles/colors/constants';
 
 export const Container = styled.SafeAreaView`
   flex: 1;

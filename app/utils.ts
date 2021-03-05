@@ -1,5 +1,5 @@
 import { Buffer } from 'buffer';
-import { credentials } from '../env';
+import env from '@ns/main/config/env';
 
 export default {
   toFormData: (object: any) => {
@@ -11,7 +11,7 @@ export default {
   },
   getPasswordCredentials: () => {
     const base64 = Buffer.from(
-      `${credentials.name}:${credentials.secret}`,
+      `${env.credentials.name}:${env.credentials.secret}`,
     ).toString('base64');
     console.log(`Bearer ${base64}`);
     return `Basic ${base64}`;
