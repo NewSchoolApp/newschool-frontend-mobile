@@ -5,7 +5,6 @@ export class AxiosHttpClient implements HttpPostClient {
   constructor (private url: string, private headers?: any) { }
 
   async post <P extends unknown, R extends unknown>(data: P): Promise<R> {
-    await axios.post(this.url, data, this.headers)
-    return null as any
+    return await axios.post(this.url, data, this.headers)
   }
 }
