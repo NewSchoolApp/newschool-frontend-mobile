@@ -18,4 +18,11 @@ describe('AxiosHttpClient', () => {
     await sut.post(data)
     expect(axiosSpy).toBeCalledWith('any_route', data, undefined)
   })
+
+  test('Should return response on succeeds', async () => {
+    const sut = makeSut()
+    const data = mockAuthenticationParam()
+    const response = await sut.post(data)
+    expect(response).toBe('any_response')
+  })
 })
