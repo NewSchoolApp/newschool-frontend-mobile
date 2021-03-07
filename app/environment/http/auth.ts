@@ -1,5 +1,5 @@
 import utils from '@ns/utils';
-import { DataResponse, ErrorResponse, http } from './config';
+import { http } from './config';
 
 export interface SignInRequest {
   username: string;
@@ -13,9 +13,8 @@ export interface UserCredentials {
 //TODO: Criar estrutura base para requests
 export const signIn = async (
   request: SignInRequest,
-): Promise<DataResponse<UserCredentials> | ErrorResponse> => {
-  try {
-    const res = await http.post(
+): Promise<UserCredentials> => {
+    const { data: { token } } = await http.post(
       '/oauth/token',
       utils.toFormData({
         ...request,
@@ -28,8 +27,5 @@ export const signIn = async (
         },
       },
     );
-    return { success: true, data: { token: res.data.accessToken } };
-  } catch (err) {
-    return { success: false, error: 'Ocorreu um erro ao autenticar' };
-  }
+    return { token };
 };

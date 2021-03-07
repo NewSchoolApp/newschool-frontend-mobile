@@ -1,11 +1,12 @@
-import React, { createContext, useState } from 'react';
-import { Alert } from 'react-native';
+import React, { createContext } from 'react';
 import * as auth from '@ns/environment/http/auth';
+import { SignInRequest } from '@ns/environment/http/auth';
+import { useFetch } from '../hooks/helpers';
 
 interface AuthContextData {
-  signed: boolean;
-  user: User | null;
-  signIn(username: string, password: string): Promise<void>;
+  signed?: boolean;
+  user?: User | null;
+  signIn(data: SignInRequest): Promise<void>;
 }
 
 interface User {
@@ -14,22 +15,20 @@ interface User {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  async function signIn(username: string, password: string) {
-    const response = await auth.signIn({ username, password });
-    if (response.success) {
-      const userApi = {
-        token: response.data.token,
-      };
-      setUser(userApi);
-    } else {
-      Alert.alert('Ocorreu um erro ao se autenticar.');
-    }
-  }
+interface SignInResponse {
+  user: User
+  signed: boolean
+}
 
+const signIn = async (data: SignInRequest): Promise<SignInResponse> => {
+  const user = await auth.signIn(data);
+  return { user, signed: !!user }
+}
+
+export const AuthProvider: React.FC = ({ children }) => {
+  const { data, fetch } = useFetch(signIn)
   return (
-    <AuthContext.Provider value={{ signed: !!user, user, signIn }}>
+    <AuthContext.Provider value={{ ...data, signIn: fetch }}>
       {children}
     </AuthContext.Provider>
   );

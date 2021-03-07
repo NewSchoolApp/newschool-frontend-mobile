@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -8,6 +8,7 @@ import { Logo } from '@ns/components/atoms/logo/logo';
 import { useAuth } from '@ns/core/hooks/auth';
 import { ActivityIndicator } from 'react-native-paper';
 import { WHITE } from '@ns/styles/colors/constants';
+import { useFetch } from '@ns/core/hooks/helpers';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -17,24 +18,11 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const LoginScreen = () => {
-  const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
-
-  const onSubmit = async (username: string, password: string) => {
-    setLoading(true);
-    try {
-      await signIn(username, password);
-    } catch (err) {
-      Alert.alert('Erro ao logar este usuártio');
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  const { loading, fetch: onSubmit } = useFetch(signIn);
   const onSignup = () => {
     Alert.alert('Signup!');
   };
-
   return (
     <Container>
       {loading ? (
@@ -45,7 +33,7 @@ export const LoginScreen = () => {
           <Logo />
           <Formik
             validationSchema={SignupSchema}
-            onSubmit={(values) => onSubmit(values.username, values.password)}
+            onSubmit={(values) => onSubmit(values)}
             initialValues={{
               username: '',
               password: '',
