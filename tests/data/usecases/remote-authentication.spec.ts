@@ -6,7 +6,7 @@ class HttpPostClientSpy implements HttpPostClient {
   result: any = null
   async post <P extends any, R extends any>(data: P): Promise<R> {
     this.params = data
-    this.result = Promise.resolve('any_value')
+    this.result = await Promise.resolve('any_value')
     return this.result
   } 
 }
@@ -34,5 +34,14 @@ describe('Remote Authentication', () => {
     }
     await sut.signIn(data)
     expect(httpPostClientSpy.params).toEqual(data)
+  })
+
+  test('Should return HttpPostClient response if succeeds', async () => {
+    const { sut, httpPostClientSpy } = makeSut()
+    const response = await sut.signIn({
+      username: 'any_username',
+      password: 'any_password'
+    })
+    expect(httpPostClientSpy.result).toEqual(response)
   })
 })
