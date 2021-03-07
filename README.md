@@ -30,19 +30,22 @@ Para executar o projeto, use:
 
 ```react-native run-android```
 
-
 ### Estrutura
 
 A pasta **app** contém o código do projeto, e as pastas android e ios contém os projetos nativos de cada plataforma.  
 O projeto é divido em pastas, de acordo com a responsabilidade dos componentes do sistema  
 
-- **app/assets** - Agrupa os assets estáticos da aplicação
-- **app/components** - Agrupa os componentes reaproveitáveis da aplicação (Botões, Inputs etc)
+- **app/ui** - Camada que agrupa tudo referente ao ReatNative, idealmente depende somente da camada **domain**
+  - **assets** - Agrupa os assets estáticos da aplicação
+  - **components** - Agrupa os componentes reaproveitáveis da aplicação (Botões, Inputs etc)
     - **atoms** - Agrupa componentes simples, os mais básicos e mais reaproveitáveis da aplicação
     - **molecules** - Agrupa componentes um pouvo mais complexos, possivelmente formado por um conjunto de átomos ou outras moléculas. Esses componentes não devem ter "inteligência" (preferencialmente stateless)
     - **organisms** - Agrupa componentes mais complexos, potencialmente reaproveitáveis, e com alguma inteligência
-- **app/core** - Agrupa os hooks e contexts da aplicação, responsáveis pela comunicação entre a camada de UI e as fontes externas de informação e pela centralização das regras de negócio
-- **app/environment** - Agrupa módulos responsáveis por servir de camada de comunicação entre as camadas externas (fontes de dados externas e recursos nativos) e a camada **core**. O objetivo principal dessa camada é diminuir o acoplamento entre as regras de negócio e as dependências externas do projeto, modularizando o código e facilitando possíveis migrações e atualizações de dependências externas
-- **app/modules** - Contém os componentes e telas que são mais específicos de cada módulo (tela de login, tela inicial, tela de cadastro, etc.)
-- **app/navigation** - Contém o arquivo routes.tsx, responsável por agrupar as telas da aplicação
-- **app/utils.ts** - Contém funções utilitárias para o projeto
+  - **core** - Agrupa os hooks e contexts da aplicação, responsáveis pela comunicação entre a camada de UI e as fontes externas de informação e pela centralização das regras de negócio
+  - **modules** - Contém os componentes e telas que são mais específicos de cada módulo (tela de login, tela inicial, tela de cadastro, etc.)
+  - **navigation** - Contém o arquivo routes.tsx, responsável por agrupar as telas da aplicação
+- **app/domain** - Agrupa todas as interfaces das regra de negócio da aplicação, idealmente não depende de nenhuma outra camada do sistema.
+- **app/data** - Agrupa todas as implementações das regras de negócio da aplicação e interfaces para segregar as dependências necessárias das regras. Idealmente conhece somente a camada **domain**.
+- **app/infra** - Agrupa todos os Adapters e implementações de bibliotecas de terceiros da aplicação. Idealmente depende somente da camada **data**. Mas às vezes também tem dependências da camada **domain**
+- **app/main** - Cria todas as dependências necessárias pelas outras camadas. Pelo motivo de montar todas as dependências necessárias das outras camadas, precisa conhecer todas as outras camadas.
+
