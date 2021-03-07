@@ -1,15 +1,6 @@
-import { HttpPostClient } from "@ns/data/protocols/http-post-client"
 import { RemoteAuthentication } from "@ns/data/usecases/remote-authentication"
-
-class HttpPostClientSpy implements HttpPostClient {
-  params: any = null
-  result: any = null
-  async post <P extends any, R extends any>(data: P): Promise<R> {
-    this.params = data
-    this.result = await Promise.resolve('any_value')
-    return this.result
-  } 
-}
+import { mockAuthenticationParam } from "@root/tests/mocks/usecases/authentication"
+import { HttpPostClientSpy, makeHttpPostClientSpy } from "@root/tests/spies/infra/http-client"
 
 export type SutTypes = {
   sut: RemoteAuthentication
@@ -17,7 +8,7 @@ export type SutTypes = {
 }
 
 const makeSut = (): SutTypes => {
-  const httpPostClientSpy = new HttpPostClientSpy()
+  const httpPostClientSpy = makeHttpPostClientSpy()
   const sut = new RemoteAuthentication(httpPostClientSpy)
   return {
     sut, 
@@ -28,30 +19,21 @@ const makeSut = (): SutTypes => {
 describe('Remote Authentication', () => {
   test('Should call HttpPostClient with correct values', async () => {
     const { sut, httpPostClientSpy } = makeSut()
-    const data = {
-      username: 'any_username',
-      password: 'any_password'
-    }
+    const data = mockAuthenticationParam()
     await sut.signIn(data)
     expect(httpPostClientSpy.params).toEqual(data)
   })
 
   test('Should return HttpPostClient response if succeeds', async () => {
     const { sut, httpPostClientSpy } = makeSut()
-    const response = await sut.signIn({
-      username: 'any_username',
-      password: 'any_password'
-    })
+    const response = await sut.signIn(mockAuthenticationParam())
     expect(httpPostClientSpy.result).toEqual(response)
   })
 
-  test('Shoul throw if HttpPostClient throws', async () => {
+  test('Should throw if HttpPostClient throws', async () => {
     const { sut, httpPostClientSpy } = makeSut()
     jest.spyOn(httpPostClientSpy, 'post').mockRejectedValueOnce(new Error())
-    const promise = sut.signIn({
-      username: 'any_username',
-      password: 'any_password'
-    })
+    const promise = sut.signIn(mockAuthenticationParam())
     await expect(promise).rejects.toThrow()
   })
 })
