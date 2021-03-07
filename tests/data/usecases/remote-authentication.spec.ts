@@ -44,4 +44,14 @@ describe('Remote Authentication', () => {
     })
     expect(httpPostClientSpy.result).toEqual(response)
   })
+
+  test('Shoul throw if HttpPostClient throws', async () => {
+    const { sut, httpPostClientSpy } = makeSut()
+    jest.spyOn(httpPostClientSpy, 'post').mockRejectedValueOnce(new Error())
+    const promise = sut.signIn({
+      username: 'any_username',
+      password: 'any_password'
+    })
+    await expect(promise).rejects.toThrow()
+  })
 })
