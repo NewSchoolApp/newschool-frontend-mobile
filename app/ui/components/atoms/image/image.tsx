@@ -3,7 +3,7 @@ import { ImageURISource, Image as RNImage } from 'react-native';
 import { ImageProps } from './image.props';
 
 const images: { [key: string]: ImageURISource } = {
-  paraisopolis: require('@ns/assets/paraisopolis.png'),
+  paraisopolis: require('@ns/ui/assets/paraisopolis.png'),
 };
 
 export const Image = (props: ImageProps) => {

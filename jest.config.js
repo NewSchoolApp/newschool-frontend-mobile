@@ -4,5 +4,6 @@ module.exports = {
   moduleNameMapper: {
     '@ns/(.*)': '<rootDir>/app/$1',
     '@root/(.*)': '<rootDir>/$1'
-  }
+  },
+  testEnvironment: 'jsdom'
 };

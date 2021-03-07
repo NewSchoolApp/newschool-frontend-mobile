@@ -10,5 +10,6 @@ export namespace Authentication {
 
   export type Result = {
     token: string;
+    signed: boolean
   }
 }

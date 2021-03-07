@@ -21,7 +21,11 @@ describe('Remote Authentication', () => {
     const { sut, httpPostClientSpy } = makeSut()
     const data = mockAuthenticationParam()
     await sut.signIn(data)
-    expect(httpPostClientSpy.params).toEqual(data)
+    expect(httpPostClientSpy.params).toEqual(
+      {
+        ...data,
+        grant_type: 'password'
+      })
   })
 
   test('Should return HttpPostClient response if succeeds', async () => {

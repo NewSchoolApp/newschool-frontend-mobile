@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import { useFetch } from "@ns/core/hooks/helpers"
+import { useFetch } from "@ns/ui/core/hooks/helpers"
 
 const makeFakeFetch = () => {
   return Promise.resolve('any_thing')

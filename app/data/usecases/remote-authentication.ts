@@ -5,6 +5,10 @@ export class RemoteAuthentication implements Authentication {
   constructor (private client: HttpPostClient) { }
 
   async signIn (data: Authentication.Params): Promise<Authentication.Result> {
-    return await this.client.post(data)
+    return await this.client.post(
+      {
+        ...data,
+        grant_type: 'password'
+      })
   }
 }

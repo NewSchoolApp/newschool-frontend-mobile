@@ -1,4 +1,5 @@
-import { AxiosHttpClient } from "@ns/infra/axios-http-client"
+import { AxiosHttpClient } from "@ns/infra/axios/axios-http-client"
+import utils from "@ns/infra/axios/axios-helper"
 import axios from 'axios'
 import { mockAuthenticationParam } from "../mocks/usecases/authentication"
 
@@ -16,7 +17,8 @@ describe('AxiosHttpClient', () => {
     const axiosSpy = jest.spyOn(axios, 'post')
     const data = mockAuthenticationParam()
     await sut.post(data)
-    expect(axiosSpy).toBeCalledWith('any_route', data, undefined)
+    const formData = utils.toFormData(data)
+    expect(axiosSpy).toBeCalledWith('any_route', formData, undefined)
   })
 
   test('Should return response on succeeds', async () => {

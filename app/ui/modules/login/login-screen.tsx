@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Alert } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { LoginForm } from '@ns/components/organisms/login-form/login-form';
+import { LoginForm } from '@ns/ui/components/organisms/login-form/login-form';
 import { Container, StyledImage } from './login-screen.styles';
-import { Logo } from '@ns/components/atoms/logo/logo';
-import { useAuth } from '@ns/core/hooks/auth';
+import { Logo } from '@ns/ui/components/atoms/logo/logo';
+import { useAuth } from '@ns/ui/core/hooks/auth';
 import { ActivityIndicator } from 'react-native-paper';
-import { WHITE } from '@ns/styles/colors/constants';
-import { useFetch } from '@ns/core/hooks/helpers';
+import { WHITE } from '@ns/ui/styles/colors/constants';
+import { useFetch } from '@ns/ui/core/hooks/helpers';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
