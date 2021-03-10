@@ -30,6 +30,10 @@ jobs:
       run: sudo gem install fastlane
     - name: Run yarn install
       run: yarn
+    - name: Replace sentry token
+      run: sed -i 's/SENTRY_TOKEN/"$SENRY_TOKEN"/' android/sentry.properties
+    - name: Replace sentry dsn
+      run: sed -i 's/SENTRY_DSN/"$SENRY_DSN"/' android/sentry.properties
     - name: Run build
       run: yarn build-release-android skip_release:true
     - name: Create Release
@@ -37,6 +41,8 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+        SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
       with:
         tag_name: ${{github.event.inputs.tag}}
         release_name: ${{github.event.inputs.name}}
