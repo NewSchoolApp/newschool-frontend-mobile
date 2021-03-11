@@ -5,7 +5,12 @@ import { mockAuthenticationParam } from "../mocks/usecases/authentication"
 
 jest.mock('axios', () => ({
   post(url: string, data?: any, config?: any): Promise<any> {
-    return Promise.resolve('any_response')
+    return Promise.resolve({
+      data: {
+        message: 'any_response'
+      },
+      status: 200
+    })
   }
 }))
 
@@ -24,7 +29,9 @@ describe('AxiosHttpClient', () => {
   test('Should return response on succeeds', async () => {
     const sut = makeSut()
     const data = mockAuthenticationParam()
-    const response = await sut.post(data)
-    expect(response).toBe('any_response')
+    const response: any = await sut.post(data)
+    expect(response).toEqual({
+      message: 'any_response'
+    })
   })
 })

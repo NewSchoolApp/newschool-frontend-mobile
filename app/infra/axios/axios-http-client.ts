@@ -7,7 +7,7 @@ export class AxiosHttpClient implements HttpPostClient {
 
   async post <P extends unknown, R extends unknown>(data: P): Promise<R> {
     const formData = AxiosHelper.toFormData(data)
-    const response = await axios.post<P, R>(this.url, formData, this.configurations)
-    return response
+    const response: any = await axios.post<P, R>(this.url, formData, this.configurations)
+    return response.data
   }
 }
