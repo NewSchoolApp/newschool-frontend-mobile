@@ -2,6 +2,7 @@ import { RemoteAuthentication } from "@ns/data/usecases/remote-authentication";
 import { Authentication } from "@ns/domain/usecases/authentication";
 import { AxiosHttpClient } from "@ns/infra/axios/axios-http-client";
 import AxiosHelper from "@ns/infra/axios/axios-helper";
+import env from "@ns/main/config/env";
 
 export const makeAuthentication = (): Authentication => {
   const configurations = {
@@ -10,6 +11,6 @@ export const makeAuthentication = (): Authentication => {
       'Content-Type': 'multipart/form-data',
     },
   }
-  const httpPostClient = new AxiosHttpClient('/oauth/token', configurations)
+  const httpPostClient = new AxiosHttpClient(env.baseUrl + '/oauth/token', configurations)
   return new RemoteAuthentication(httpPostClient)
 }
