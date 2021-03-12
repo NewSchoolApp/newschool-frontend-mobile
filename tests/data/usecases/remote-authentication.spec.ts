@@ -54,7 +54,7 @@ describe('Remote Authentication', () => {
     await expect(promise).rejects.toThrow(InvalidCredentialsError)
   })
 
-  test('Should throw UnexpectedError if status code is server error', async () => {
+  test('Should throw UnexpectedError if status code is 500', async () => {
     const { sut, httpClientSpy } = makeSut()
     httpClientSpy.response = <any> {
       statusCode: 500,
