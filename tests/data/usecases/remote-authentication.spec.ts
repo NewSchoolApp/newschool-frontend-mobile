@@ -3,6 +3,7 @@ import { Authentication } from "@ns/domain/usecases/authentication"
 import { mockAuthenticationParam } from "@root/tests/mocks/usecases/authentication"
 import { HttpClientSpy } from "@root/tests/spies/infra/http-client"
 import AxiosHelper from "@ns/infra/axios/axios-helper";
+import { InvalidCredentialsError } from "@ns/domain/errors/invalid-credentials-error";
 
 export type SutTypes = {
   sut: RemoteAuthentication
@@ -42,5 +43,14 @@ describe('Remote Authentication', () => {
     }
     const response = await sut.signIn(mockAuthenticationParam())
     expect(httpClientSpy.response.body).toEqual(response)
+  })
+
+  test('Should throw InvalidCredentialsError if status code is 401', async () => {
+    const { sut, httpClientSpy } = makeSut()
+    httpClientSpy.response = <any> {
+      statusCode: 401,
+    }
+    const promise = sut.signIn(mockAuthenticationParam())
+    await expect(promise).rejects.toThrow(InvalidCredentialsError)
   })
 })
