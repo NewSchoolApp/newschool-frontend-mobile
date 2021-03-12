@@ -1,3 +1,4 @@
+import { InvalidCredentialsError } from "@ns/domain/errors/invalid-credentials-error";
 import { Authentication } from "@ns/domain/usecases/authentication";
 import { HttpClient, HttpStatusCode } from "../protocols/http-client";
 
@@ -14,8 +15,8 @@ export class RemoteAuthentication implements Authentication {
         grant_type: 'password'
       }
     })
-    if (httpResponse.statusCode !== HttpStatusCode.Ok) {
-      throw new Error()
+    if (httpResponse.statusCode === HttpStatusCode.Unauthorized) {
+      throw new InvalidCredentialsError()
     }
     return httpResponse.body as any
   }
