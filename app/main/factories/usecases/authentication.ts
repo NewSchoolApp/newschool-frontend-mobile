@@ -1,7 +1,7 @@
 import { RemoteAuthentication } from "@ns/data/usecases/remote-authentication";
 import { Authentication } from "@ns/domain/usecases/authentication";
 import { AxiosHttpClient } from "@ns/infra/axios/axios-http-client";
-import AxiosHelper from "@ns/infra/axios/axios-helper";
+import AxiosHelper from "@ns/data/protocols/http-helper";
 import env from "@ns/main/config/env";
 
 export const makeAuthentication = (): Authentication => {

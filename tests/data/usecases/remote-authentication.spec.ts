@@ -4,6 +4,7 @@ import { mockAuthenticationParam } from "@root/tests/mocks/usecases/authenticati
 import { HttpClientSpy } from "@root/tests/spies/infra/http-client"
 import { InvalidCredentialsError } from "@ns/domain/errors/invalid-credentials-error";
 import { UnexpectedError } from "@ns/domain/errors/unexpected-error";
+import HttpHelper from "@ns/data/protocols/http-helper";
 
 export type SutTypes = {
   sut: RemoteAuthentication
@@ -24,10 +25,10 @@ describe('Remote Authentication', () => {
     const { sut, httpClientSpy } = makeSut()
     const data = mockAuthenticationParam()
     await sut.signIn(data)
-    expect(httpClientSpy.body).toEqual({
-        ...data,
-        grant_type: 'password'
-      })
+    expect(httpClientSpy.body).toEqual(HttpHelper.toFormData({
+      ...data,
+      grant_type: 'password'
+    }))
     expect(httpClientSpy.method).toBe("post")
     expect(httpClientSpy.headers).toBe('any_header')
     expect(httpClientSpy.url).toBe('any_url')
