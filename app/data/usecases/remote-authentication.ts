@@ -1,4 +1,5 @@
 import { InvalidCredentialsError } from "@ns/domain/errors/invalid-credentials-error";
+import { UnexpectedError } from "@ns/domain/errors/unexpected-error";
 import { Authentication } from "@ns/domain/usecases/authentication";
 import { HttpClient, HttpStatusCode } from "../protocols/http-client";
 
@@ -15,8 +16,11 @@ export class RemoteAuthentication implements Authentication {
         grant_type: 'password'
       }
     })
-    if (httpResponse.statusCode === HttpStatusCode.Unauthorized) {
-      throw new InvalidCredentialsError()
+    switch (httpResponse.statusCode) {
+      case HttpStatusCode.Unauthorized:
+        throw new InvalidCredentialsError()
+      case HttpStatusCode.ServerError:
+        throw new UnexpectedError
     }
     return httpResponse.body as any
   }
