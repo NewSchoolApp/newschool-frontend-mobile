@@ -2,9 +2,10 @@ import { AxiosHttpClient } from "@ns/infra/axios/axios-http-client"
 import utils from "@ns/infra/axios/axios-helper"
 import axios from 'axios'
 import { mockAuthenticationParam } from "../mocks/usecases/authentication"
+import { HttpRequest } from "@ns/data/protocols/http-client"
 
 jest.mock('axios', () => ({
-  post(url: string, data?: any, config?: any): Promise<any> {
+  request(data: { url: string, data?: any, method: string, headers?: any }): Promise<any> {
     return Promise.resolve({
       data: {
         message: 'any_response'
@@ -14,24 +15,40 @@ jest.mock('axios', () => ({
   }
 }))
 
-const makeSut = (): AxiosHttpClient => new AxiosHttpClient('any_route')
+const mockHttpRequest = (): HttpRequest => ({
+  url: 'any_url',
+  body: {
+    name: 'any_value'
+  },
+  method: 'get',
+  headers: 'any_header'
+})
+
+const makeSut = (): AxiosHttpClient => new AxiosHttpClient()
 
 describe('AxiosHttpClient', () => {
-  test('Should call post() with correct values', async () => {
+  test('Should call request() with correct values', async () => {
     const sut = makeSut()
-    const axiosSpy = jest.spyOn(axios, 'post')
-    const data = mockAuthenticationParam()
+    const axiosSpy = jest.spyOn(axios, 'request')
+    const data = mockHttpRequest()
     await sut.request(data)
-    const formData = utils.toFormData(data)
-    expect(axiosSpy).toBeCalledWith('any_route', formData, undefined)
+    expect(axiosSpy).toBeCalledWith({ 
+      url: data.url,
+      data: data.body,
+      headers: data.headers,
+      method: data.method
+    })
   })
 
   test('Should return response on succeeds', async () => {
     const sut = makeSut()
-    const data = mockAuthenticationParam()
+    const data = mockHttpRequest()
     const response: any = await sut.request(data)
     expect(response).toEqual({
-      message: 'any_response'
+      body: {
+        message: 'any_response'
+      },
+      statusCode: 200
     })
   })
 })
