@@ -21,7 +21,7 @@ describe('AxiosHttpClient', () => {
     const sut = makeSut()
     const axiosSpy = jest.spyOn(axios, 'post')
     const data = mockAuthenticationParam()
-    await sut.post(data)
+    await sut.request(data)
     const formData = utils.toFormData(data)
     expect(axiosSpy).toBeCalledWith('any_route', formData, undefined)
   })
@@ -29,7 +29,7 @@ describe('AxiosHttpClient', () => {
   test('Should return response on succeeds', async () => {
     const sut = makeSut()
     const data = mockAuthenticationParam()
-    const response: any = await sut.post(data)
+    const response: any = await sut.request(data)
     expect(response).toEqual({
       message: 'any_response'
     })
