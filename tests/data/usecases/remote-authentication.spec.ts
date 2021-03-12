@@ -2,8 +2,8 @@ import { RemoteAuthentication } from "@ns/data/usecases/remote-authentication"
 import { Authentication } from "@ns/domain/usecases/authentication"
 import { mockAuthenticationParam } from "@root/tests/mocks/usecases/authentication"
 import { HttpClientSpy } from "@root/tests/spies/infra/http-client"
-import AxiosHelper from "@ns/infra/axios/axios-helper";
 import { InvalidCredentialsError } from "@ns/domain/errors/invalid-credentials-error";
+import { UnexpectedError } from "@ns/domain/errors/unexpected-error";
 
 export type SutTypes = {
   sut: RemoteAuthentication
@@ -53,4 +53,14 @@ describe('Remote Authentication', () => {
     const promise = sut.signIn(mockAuthenticationParam())
     await expect(promise).rejects.toThrow(InvalidCredentialsError)
   })
+
+  test('Should throw UnexpectedError if status code is server error', async () => {
+    const { sut, httpClientSpy } = makeSut()
+    httpClientSpy.response = <any> {
+      statusCode: 500,
+    }
+    const promise = sut.signIn(mockAuthenticationParam())
+    await expect(promise).rejects.toThrow(UnexpectedError)
+  })
 })
+
