@@ -1,7 +1,5 @@
 import { AxiosHttpClient } from "@ns/infra/axios/axios-http-client"
-import utils from "@ns/infra/axios/axios-helper"
 import axios from 'axios'
-import { mockAuthenticationParam } from "../mocks/usecases/authentication"
 import { HttpRequest } from "@ns/data/protocols/http-client"
 
 jest.mock('axios', () => ({
