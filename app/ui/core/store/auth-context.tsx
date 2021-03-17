@@ -4,21 +4,24 @@ import { Authentication } from '@ns/domain/usecases/authentication';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-const signIn = async (authentication: Authentication, data: any): Promise<Authentication.Result> => await authentication.signIn(data);
+const signIn = async (
+  authentication: Authentication,
+  data: any,
+): Promise<Authentication.Result> => await authentication.signIn(data);
 
 interface AuthContextData {
   data?: Authentication.Result | null;
-  signIn (data: Authentication.Params): Promise<void>;
+  signIn(data: Authentication.Params): Promise<void>;
 }
 
 export interface Props {
-  children?: ReactNode
-  authentication: Authentication
+  children?: ReactNode;
+  authentication: Authentication;
 }
 
 export const AuthProvider = (props: Props) => {
-  const { authentication, children } = props
-  const { data, fetch } = useFetch(data => signIn(authentication, data))
+  const { authentication, children } = props;
+  const { data, fetch } = useFetch((data) => signIn(authentication, data));
   return (
     <AuthContext.Provider value={{ data, signIn: fetch }}>
       {children}

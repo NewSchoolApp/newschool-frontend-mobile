@@ -11,7 +11,7 @@ export default {
   },
 
   getPasswordCredentials: () => {
-    const credentials = `${env.credentials.name}:${env.credentials.secret}`
+    const credentials = `${env.credentials.name}:${env.credentials.secret}`;
     const base64 = Buffer.from(credentials).toString('base64');
     return `Basic ${base64}`;
   },

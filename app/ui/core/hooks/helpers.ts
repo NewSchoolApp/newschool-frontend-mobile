@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export const useFetch = <T extends unknown>(fn: (arg?: any) => Promise<T>) => {
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ export const useFetch = <T extends unknown>(fn: (arg?: any) => Promise<T>) => {
     } catch (err) {
       setError(err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -21,5 +21,5 @@ export const useFetch = <T extends unknown>(fn: (arg?: any) => Promise<T>) => {
     data,
     loading,
     error,
-  }
+  };
 };

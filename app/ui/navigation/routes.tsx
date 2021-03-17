@@ -9,19 +9,15 @@ const Stack = createStackNavigator();
 
 const screenOptions = {
   headerShown: false,
-}
+};
 
 const LoginRoutes = () => (
-  <Stack.Navigator
-    screenOptions={screenOptions}
-    initialRouteName="Login">
+  <Stack.Navigator screenOptions={screenOptions} initialRouteName="Login">
     <Stack.Screen name="Login" component={LoginScreen} />
   </Stack.Navigator>
 );
 
-const SecuredRoutes = () => (
-  <BottomTabs/>
-);
+const SecuredRoutes = () => <BottomTabs />;
 
 export const Routes = () => {
   const { data: user } = useAuth();
