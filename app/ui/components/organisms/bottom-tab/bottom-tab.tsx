@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { BottomNavigation } from 'react-native-paper';
+import { Label } from '@ns/ui/components/atoms/label/label';
 import { HomeScreen } from '@ns/ui/modules/home/home-screen';
 import { PRIMARY } from '@ns/ui/styles/colors/constants';
 import { BarStyle } from './bottom-tab.style';
+
+const fakeComponent = (text: string): JSX.Element => <Label color="white" preset="medium" text={text} />
 
 const route = (route: string, title: string, icon: string) => ({
   key: route,
   title,
   icon,
-  testID: route,
+  testID: `${route}-btn`,
+  accessibilityLabel: `${route} button`
 });
 
 export const routeStates = [
@@ -21,10 +25,10 @@ export const routeStates = [
 
 export const mapper = {
   home: HomeScreen,
-  profile: HomeScreen,
-  courses: HomeScreen,
-  certificates: HomeScreen,
-  others: HomeScreen,
+  profile: () => fakeComponent('Profile'),
+  courses: () => fakeComponent('Courses'),
+  certificates: () => fakeComponent('Certificates'),
+  others: () => fakeComponent('Others'),
 };
 
 const BottomTabs = () => {
