@@ -24,6 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      env:
+          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
     - name: Install Fastlane dependencies
       run: sudo gem install bundler -v '2.1.4' && sudo gem install rake
     - name: Install Fastlane
@@ -41,8 +44,6 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
-        SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
       with:
         tag_name: ${{github.event.inputs.tag}}
         release_name: ${{github.event.inputs.name}}
