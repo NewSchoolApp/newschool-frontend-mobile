@@ -21,15 +21,29 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      env:
+          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
     - name: Install Fastlane dependencies
       run: sudo gem install bundler -v '2.1.4' && sudo gem install rake
     - name: Install Fastlane
       run: sudo gem install fastlane
     - name: Run yarn install
       run: yarn
+    - name: Replace sentry token
+      env:
+        SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+        SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      run: sed -i 's/SENTRY_TOKEN/'"$SENTRY_TOKEN"'/' android/sentry.properties
+    - name: Replace sentry dsn
+      env:
+        SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+        SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      run: sed -i 's/SENTRY_DSN/'"$SENRY_DSN"'/' env.ts
     - name: Run build
       run: yarn build-release-android skip_release:true
     - name: Create Release
