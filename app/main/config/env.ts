@@ -6,5 +6,5 @@ export default {
     name: process.env.CREDENTIAL_NAME || 'NEWSCHOOL@FRONT',
     secret: process.env.CREDENTIAL_SECRET || 'NEWSCHOOL@FRONTSECRET',
   },
-  sentryDsn: process.env.SENTRY_DSN || 'SENTRY_DSN',
+  sentryDsn: 'SENTRY_DSN',
 };
