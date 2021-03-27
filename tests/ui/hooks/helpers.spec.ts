@@ -18,14 +18,14 @@ describe('helpers', () => {
     test('Should set loading to false when fetch is resolved', async () => {
       const sut = useFetch;
       const { result } = renderHook(() => sut(makeFakeFetch));
-      await act(() => result.current.fetch());
+      await act(async () => result.current.fetch());
       expect(result.current.loading).toBe(false);
     });
 
     test('Should return fetch result when succeeds', async () => {
       const sut = useFetch;
       const { result } = renderHook(() => sut(makeFakeFetch));
-      await act(() => result.current.fetch());
+      await act(async () => result.current.fetch());
       expect(result.current.data).toBe('any_thing');
     });
 
@@ -34,7 +34,7 @@ describe('helpers', () => {
       const { result } = renderHook(() =>
         sut(() => Promise.reject(new Error())),
       );
-      await act(() => result.current.fetch());
+      await act(async () => result.current.fetch());
       expect(result.current.error).toBeDefined();
     });
   });
