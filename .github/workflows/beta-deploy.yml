@@ -43,7 +43,7 @@ jobs:
       env:
         SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
         SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-      run: sed -i 's/SENTRY_DSN/'"$SENRY_DSN"'/' env.ts
+      run: sed -i 's/SENTRY_DSN/'"$SENRY_DSN"'/' app/main/config/env.ts
     - name: Run build
       run: yarn build-release-android skip_release:true
     - name: Create Release
