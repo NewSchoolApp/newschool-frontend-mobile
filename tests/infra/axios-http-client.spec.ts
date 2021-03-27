@@ -13,7 +13,7 @@ jest.mock('axios', () => ({
   },
 }));
 
-const mockHttpRequest = (): HttpRequest => ({
+const mockHttpRequest = (): HttpRequest<any> => ({
   url: 'any_url',
   body: {
     name: 'any_value',
@@ -22,7 +22,7 @@ const mockHttpRequest = (): HttpRequest => ({
   headers: 'any_header',
 });
 
-const makeSut = (): AxiosHttpClient => new AxiosHttpClient();
+const makeSut = (): AxiosHttpClient<any, any> => new AxiosHttpClient<any, any>();
 
 describe('AxiosHttpClient', () => {
   test('Should call request() with correct values', async () => {

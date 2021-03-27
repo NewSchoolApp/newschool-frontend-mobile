@@ -8,11 +8,11 @@ import HttpHelper from '@ns/data/protocols/http-helper';
 
 export type SutTypes = {
   sut: RemoteAuthentication;
-  httpClientSpy: HttpClientSpy<Authentication.Result>;
+  httpClientSpy: HttpClientSpy<FormData, Authentication.Result>;
 };
 
 const makeSut = (): SutTypes => {
-  const httpClientSpy = new HttpClientSpy<Authentication.Result>();
+  const httpClientSpy = new HttpClientSpy<FormData, Authentication.Result>();
   const sut = new RemoteAuthentication(httpClientSpy, 'any_url', 'any_header');
   return {
     sut,

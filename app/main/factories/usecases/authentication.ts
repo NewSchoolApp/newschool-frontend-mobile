@@ -10,6 +10,6 @@ export const makeAuthentication = (): Authentication => {
     Authorization: HttpHelper.getPasswordCredentials(),
     'Content-Type': 'multipart/form-data',
   };
-  const httpPostClient = new AxiosHttpClient();
+  const httpPostClient = new AxiosHttpClient<FormData, Authentication.Result>();
   return new RemoteAuthentication(httpPostClient, url, headers);
 };
