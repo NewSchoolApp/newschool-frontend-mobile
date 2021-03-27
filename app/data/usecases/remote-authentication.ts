@@ -6,7 +6,7 @@ import { HttpClient, HttpStatusCode } from '../protocols/http-client';
 
 export class RemoteAuthentication implements Authentication {
   constructor(
-    private readonly client: HttpClient<Authentication.Result>,
+    private readonly client: HttpClient<FormData, Authentication.Result>,
     private readonly url: string,
     private readonly headers?: any,
   ) {}
@@ -24,7 +24,7 @@ export class RemoteAuthentication implements Authentication {
     });
     switch (httpResponse.statusCode) {
       case HttpStatusCode.Ok:
-        return httpResponse.body as any;
+        return httpResponse.body;
       case HttpStatusCode.Unauthorized:
         throw new InvalidCredentialsError();
       default:

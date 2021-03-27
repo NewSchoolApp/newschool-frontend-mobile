@@ -5,14 +5,16 @@ import { HomeScreen } from '@ns/ui/modules/home/home-screen';
 import { PRIMARY } from '@ns/ui/styles/colors/constants';
 import { BarStyle } from './bottom-tab.style';
 
-const fakeComponent = (text: string): JSX.Element => <Label color="white" preset="medium" text={text} />
+const fakeComponent = (text: string): JSX.Element => (
+  <Label color="white" preset="medium" text={text} />
+);
 
-const route = (route: string, title: string, icon: string) => ({
-  key: route,
+const route = (routeName: string, title: string, icon: string) => ({
+  key: routeName,
   title,
   icon,
-  testID: `${route}-btn`,
-  accessibilityLabel: `${route} button`
+  testID: `${routeName}-btn`,
+  accessibilityLabel: `${routeName} button`,
 });
 
 export const routeStates = [

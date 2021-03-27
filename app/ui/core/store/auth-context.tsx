@@ -21,7 +21,7 @@ export interface Props {
 
 export const AuthProvider = (props: Props) => {
   const { authentication, children } = props;
-  const { data, fetch } = useFetch((data) => signIn(authentication, data));
+  const { data, fetch } = useFetch((res) => signIn(authentication, res));
   return (
     <AuthContext.Provider value={{ data, signIn: fetch }}>
       {children}
