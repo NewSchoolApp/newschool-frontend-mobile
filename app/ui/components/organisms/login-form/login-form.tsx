@@ -38,7 +38,12 @@ export const LoginForm = (props: LoginFormProps) => {
         <Button onPress={props.onSignup} mode="outlined" text="Cadastrar" />
       </ItemContainer>
       <ItemContainer>
-        <Button onPress={() => {}} icon="facebook" mode="text" text="Entrar com Facebook" />
+        <Button
+          onPress={() => {}}
+          icon="facebook"
+          mode="text"
+          text="Entrar com Facebook"
+        />
       </ItemContainer>
       <ItemContainer>
         <Button onPress={() => {}} mode="text" text="Esqueceu seu senha?" />

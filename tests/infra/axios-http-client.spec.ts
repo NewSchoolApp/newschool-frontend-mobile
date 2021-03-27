@@ -22,7 +22,8 @@ const mockHttpRequest = (): HttpRequest<any> => ({
   headers: 'any_header',
 });
 
-const makeSut = (): AxiosHttpClient<any, any> => new AxiosHttpClient<any, any>();
+const makeSut = (): AxiosHttpClient<any, any> =>
+  new AxiosHttpClient<any, any>();
 
 describe('AxiosHttpClient', () => {
   test('Should call request() with correct values', async () => {

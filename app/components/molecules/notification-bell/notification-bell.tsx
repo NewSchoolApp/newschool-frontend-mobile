@@ -8,7 +8,7 @@ import { Container, StyledBadge, StyledBell } from './notification-bell.styles';
 
 export const NotificationBell = (props: NotificationBellProps) => {
   const Bell = props.notifications > 0 ? BellHomeActive : BellHome;
-  const badgeActive = props.notifications == 0 ? false : true;
+  const badgeActive = props.notifications === 0 ? false : true;
   const notificationNumber =
     props.notifications > 99 ? '99+' : props.notifications;
 
