@@ -9,11 +9,10 @@ export default {
     });
     return form;
   },
+
   getPasswordCredentials: () => {
-    const base64 = Buffer.from(
-      `${env.credentials.name}:${env.credentials.secret}`,
-    ).toString('base64');
-    console.log(`Bearer ${base64}`);
+    const credentials = `${env.credentials.name}:${env.credentials.secret}`;
+    const base64 = Buffer.from(credentials).toString('base64');
     return `Basic ${base64}`;
   },
 };

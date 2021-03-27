@@ -1,13 +1,21 @@
-import { HttpPostClient } from "@ns/data/protocols/http-post-client";
-import AxiosHelper from "./axios-helper";
-import axios from "axios";
+import {
+  HttpClient,
+  HttpRequest,
+  HttpResponse,
+} from '@ns/data/protocols/http-client';
+import axios from 'axios';
 
-export class AxiosHttpClient implements HttpPostClient {
-  constructor (private url: string, private configurations?: any) { }
-
-  async post <P extends unknown, R extends unknown>(data: P): Promise<R> {
-    const formData = AxiosHelper.toFormData(data)
-    const response = await axios.post<P, R>(this.url, formData, this.configurations)
-    return response
+export class AxiosHttpClient<T, R> implements HttpClient {
+  async request(data: HttpRequest<T>): Promise<HttpResponse<R>> {
+    const { status: statusCode, data: response } = await axios.request({
+      url: data.url,
+      method: data.method,
+      data: data.body,
+      headers: data.headers,
+    });
+    return {
+      statusCode,
+      body: response,
+    };
   }
 }
