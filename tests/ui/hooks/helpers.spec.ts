@@ -29,7 +29,7 @@ describe('helpers', () => {
       expect(result.current.data).toBe('any_thing');
     });
 
-    test('Should return fetch result when succeeds', async () => {
+    test('Should return valid fetch result when succeeds', async () => {
       const sut = useFetch;
       const { result } = renderHook(() =>
         sut(() => Promise.reject(new Error())),

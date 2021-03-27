@@ -26,6 +26,7 @@ export const LoginScreen = () => {
   return (
     <Container>
       {loading ? (
+        // @ts-ignore
         <ActivityIndicator animating={true} color={WHITE} size="large" />
       ) : (
         <>

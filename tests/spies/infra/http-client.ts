@@ -6,7 +6,7 @@ import {
   HttpResponse,
 } from '@ns/data/protocols/http-client';
 
-export class HttpClientSpy<R> implements HttpClient<R> {
+export class HttpClientSpy<T, R> implements HttpClient<T, R> {
   body?: any;
   headers?: any;
   url?: string;
@@ -14,7 +14,7 @@ export class HttpClientSpy<R> implements HttpClient<R> {
   response: HttpResponse<R> = {
     statusCode: HttpStatusCode.Ok,
   };
-  async request(data: HttpRequest): Promise<HttpResponse<R>> {
+  async request(data: HttpRequest<T>): Promise<HttpResponse<R>> {
     this.body = data.body;
     this.headers = data.headers;
     this.url = data.url;
