@@ -1,3 +1,11 @@
 export interface PodiumProps {
-  usersList: any;
+  usersList: Array<IUserPodium>;
+}
+
+export interface IUserPodium {
+  userId: string;
+  userName: string;
+  points: string;
+  photoPath: string;
+  rank: string;
 }
